@@ -1,0 +1,121 @@
+body {
+    background-color: skyblue;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+#turnInfo {
+    margin-top: 5px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1a1a1a;
+}
+
+.game {
+    height: 60vmin;
+    width: 60vmin;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5vmin;
+}
+
+.box {
+    height: 18vmin;
+    width: 18vmin;
+    background: white;
+    border-radius: 1rem;
+    font-size: 10vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#Play-Again {
+    padding: 1.25rem;
+    font-size: medium;
+    border-radius: 2rem;
+    color: azure;
+    background-color: black;
+    border: none;
+    cursor: pointer;
+}
+
+#Abort-Game {
+    padding: 1.25rem;
+    font-size: medium;
+    border-radius: 2rem;
+    color: white;
+    background-color: crimson;
+    margin-left: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.6);
+}
+
+.popup-box {
+    background: #ffffff;
+    padding: 20px;
+    width: 260px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.popup-buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.popup-buttons button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.popup-buttons .danger {
+    background: crimson;
+    color: white;
+}
+
+
+#Player1{
+    padding: 1.25rem;
+    font-size: medium;
+    border-radius: 2rem;
+    color: azure;
+    background-color: black;
+    border: none;
+    cursor: pointer;
+}
+
+
+#Player{
+    padding: 1.25rem;
+    font-size: medium;
+    border-radius: 2rem;
+    color: azure;
+    background-color: black;
+    border: none;
+    cursor: pointer;
+}

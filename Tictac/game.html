@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+  
+
+    <h1>Tic Tac Toe</h1>
+    <div id="turnInfo">Turn for X</div>
+    <div class="name-box">
+        <input type="text" id="nameX" placeholder="Enter Player 1 (X)">
+        <input type="text" id="nameO" placeholder="Enter Player 2 (O)">
+        <button id="startGame">Start Game</button>
+    </div>
+
+    <div class="game">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+
+    <br>
+    <button id="Play-Again">Play Again</button>
+    <button id="Abort-Game">Abort game</button>
+
+    <div id="leaderboard" style="margin-top:20px; text-align: left; max-width:600px; margin-left:auto; margin-right:auto;">
+        <h2>Recent Games</h2>
+        <button id="loadLeaderboard">Load Leaderboard</button>
+        <ul id="leaderboardList"></ul>
+    </div>
+
+   <div id="confirmPopup" class="popup">
+    <div class="popup-box">
+        <p>Are you sure you want to abort the game?</p>
+
+        <div class="Popup-buttons">
+            <button id="cancelAbort">Cancel</button>
+            <button id="confirmAbort" class="danger">Abort now</button>
+        </div>
+    </div>
+</div>
+
+    
+    <!-- Configuration: set `window.API_BASE` to your server URL (e.g. http://localhost:3000) to use the secure server.
+         If left empty the client will attempt to use the Supabase client directly. -->
+    <script>window.API_BASE = '';</script>
+    <!-- Supabase UMD bundle (for simple static pages). Loads a global `supabase` object. -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="supabaseConfig.js"></script>
+    <script src="supabaseClient.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

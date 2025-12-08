@@ -15,18 +15,32 @@
         <input type="text" id="nameO" placeholder="Enter Player 2 (O)">
         <button id="startGame">Start Game</button>
     </div>
+    
+    <div class="players">
+        <div id="playerX" class="player active">
+            <h2 id="labelX">Player X</h2>
+            <p>Score: <span id="scoreX">0</span></p>
+        </div>
 
-    <div class="game">
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
+        <div id="playerO" class="player">
+            <h2 id="labelO">Player O</h2>
+            <p>Score: <span id="scoreO">0</span></p>
+        </div>
     </div>
+
+    <h2 id="status">Enter names to start</h2>
+   <div class="game">
+    <div class="box" data-index="0"></div>
+    <div class="box" data-index="1"></div>
+    <div class="box" data-index="2"></div>
+    <div class="box" data-index="3"></div>
+    <div class="box" data-index="4"></div>
+    <div class="box" data-index="5"></div>
+    <div class="box" data-index="6"></div>
+    <div class="box" data-index="7"></div>
+    <div class="box" data-index="8"></div>
+</div>
+
 
     <br>
     <button id="Play-Again">Play Again</button>

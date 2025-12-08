@@ -1,7 +1,9 @@
 body {
-    background-color: skyblue;
-    text-align: center;
+    margin: 0;
+    background: #e4ebec;
     font-family: Arial, sans-serif;
+    color: rgb(202, 34, 34);
+    text-align: center;
 }
 
 h1 {
@@ -118,4 +120,61 @@ h1 {
     background-color: black;
     border: none;
     cursor: pointer;
+}
+
+
+.players {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.player {
+    background: #1f2937;
+    padding: 15px 25px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.player.active {
+    background: #273447;
+    box-shadow: 0 0 10px #3ab4ff;
+}
+
+.player h2 {
+    margin: 0;
+    font-size: 1.6rem;
+}
+
+.player p {
+    margin: 5px 0;
+    font-size: 1.2rem;
+}
+
+
+#status {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+
+.board {
+    width: 80vmin;
+    height: 80vmin;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1vmin;
+    margin: auto;
+}
+
+
+.box.x::after {
+    content: "X";
+    font-size: 60px;
+}
+
+.box.o::after {
+    content: "O";
+    font-size: 60px;
 }

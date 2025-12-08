@@ -178,3 +178,16 @@ h1 {
     content: "O";
     font-size: 60px;
 }
+
+
+
+#startGame {
+    padding: 0.25rem;
+    font-size: medium;
+    border-radius: 2rem;
+    color: white;
+    background-color: crimson;
+    margin-left: 0.25rem;
+    border: none;
+    cursor: pointer;
+}

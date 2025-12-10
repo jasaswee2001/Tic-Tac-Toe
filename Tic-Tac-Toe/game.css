@@ -1,8 +1,8 @@
 body {
     margin: 0;
-    background: #e4ebec;
+    background: white;
     font-family: Arial, sans-serif;
-    color: rgb(202, 34, 34);
+    color: rgb(4, 0, 255);
     text-align: center;
 }
 
@@ -12,28 +12,22 @@ h1 {
     font-weight: bold;
 }
 
-#turnInfo {
-    margin-top: 5px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #1a1a1a;
-}
 
 .game {
-    height: 60vmin;
-    width: 60vmin;
+    height: 55vmin;
+    width: 55vmin;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5vmin;
+    gap: 1.3vmin;
 }
 
 .box {
-    height: 18vmin;
-    width: 18vmin;
-    background: white;
+    height: 16vmin;
+    width: 16vmin;
+    background: lightgreen;
     border-radius: 1rem;
-    font-size: 10vmin;
+    font-size: 6.5vmin;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,12 +35,13 @@ h1 {
     cursor: pointer;
 }
 
+
 #Play-Again {
     padding: 1.25rem;
     font-size: medium;
     border-radius: 2rem;
-    color: azure;
-    background-color: black;
+    color: rgb(4, 0, 255);
+    background-color:  DeepSkyBlue;
     border: none;
     cursor: pointer;
 }
@@ -62,20 +57,10 @@ h1 {
     cursor: pointer;
 }
 
-.popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0,0,0,0.6);
-}
+
 
 .popup-box {
-    background: #ffffff;
+    background: #1b1146;
     padding: 20px;
     width: 260px;
     border-radius: 12px;
@@ -95,15 +80,10 @@ h1 {
     cursor: pointer;
 }
 
-.popup-buttons .danger {
-    background: crimson;
-    color: white;
-}
-
 
 #Player1{
     padding: 1.25rem;
-    font-size: medium;
+    font-size: small;
     border-radius: 2rem;
     color: azure;
     background-color: black;
@@ -112,52 +92,39 @@ h1 {
 }
 
 
-#Player{
+#Player2{
     padding: 1.25rem;
-    font-size: medium;
+    font-size: small;
     border-radius: 2rem;
-    color: azure;
-    background-color: black;
     border: none;
     cursor: pointer;
 }
 
 
 .players {
+    width: 100%;
     display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-bottom: 20px;
+    justify-content: center; 
+    gap: 40px;                  
+    margin-top: 20px;
 }
 
 .player {
-    background: #1f2937;
+    background: DeepSkyBlue;
     padding: 15px 25px;
     border-radius: 12px;
     transition: 0.3s;
 }
 
-.player.active {
-    background: #273447;
-    box-shadow: 0 0 10px #3ab4ff;
-}
-
 .player h2 {
     margin: 0;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
 }
 
 .player p {
     margin: 5px 0;
     font-size: 1.2rem;
 }
-
-
-#status {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-}
-
 
 .board {
     width: 80vmin;
@@ -168,26 +135,56 @@ h1 {
     margin: auto;
 }
 
+.name-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+
+.name-box input {
+    padding: 10px 15px;
+    width: 180px;
+    border: 2px solid #cfd8dc;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: 0.3s ease;
+    outline: none;
+    background: white;
+}
+
+.name-box input:focus {
+    border-color: #3ab4ff;
+    box-shadow: 0 0 6px rgba(58, 180, 255, 0.5);
+}
+
+
+#startGame {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    background: green;
+    color: white;
+    font-size: 16px;
+   
+}
+
+ #status {
+        color: green;
+    }
 
 .box.x::after {
     content: "X";
-    font-size: 60px;
+    font-size: 10vmin;
+    color: #ff0000;
+    font-weight: bold;
 }
 
 .box.o::after {
     content: "O";
-    font-size: 60px;
-}
-
-
-
-#startGame {
-    padding: 0.25rem;
-    font-size: medium;
-    border-radius: 2rem;
-    color: white;
-    background-color: crimson;
-    margin-left: 0.25rem;
-    border: none;
-    cursor: pointer;
+    font-size: 10vmin;
+    color: #0000ff;
+    font-weight: bold;
 }

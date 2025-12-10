@@ -15,7 +15,7 @@ create table if not exists games (
   player_x uuid references players(id),
   player_o uuid references players(id),
   winner text,
-  moves jsonb,
+  moves text,
   created_at timestamptz default now()
 );
 

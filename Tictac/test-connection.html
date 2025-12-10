@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supabase Connection Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        .test { margin: 10px 0; padding: 10px; background: white; border-left: 4px solid #ccc; }
+        .pass { border-left-color: green; }
+        .fail { border-left-color: red; }
+        .pending { border-left-color: orange; }
+        code { background: #eee; padding: 2px 5px; }
+    </style>
+</head>
+<body>
+    <h1>Supabase Connection Diagnostic</h1>
+    <div id="results"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="supabaseConfig.js"></script>
+    <script src="supabaseClient.js"></script>
+
+    <script>
+        const resultsDiv = document.getElementById('results');
+
+        function logTest(name, status, message) {
+            const div = document.createElement('div');
+            div.className = `test ${status}`;
+            div.innerHTML = `<strong>${name}:</strong> ${message}`;
+            resultsDiv.appendChild(div);
+        }
+
+        // Test 1: Check if Supabase global exists
+        if (typeof supabase !== 'undefined') {
+            logTest('Supabase Library', 'pass', 'Supabase UMD bundle loaded ✓');
+        } else {
+            logTest('Supabase Library', 'fail', 'Supabase UMD bundle NOT loaded ✗');
+        }
+
+        // Test 2: Check config
+        if (window.SUPABASE_URL && window.SUPABASE_ANON_KEY) {
+            logTest('Config', 'pass', `URL: ${window.SUPABASE_URL.slice(0, 30)}... ✓`);
+        } else {
+            logTest('Config', 'fail', 'Missing SUPABASE_URL or SUPABASE_ANON_KEY ✗');
+        }
+
+        // Test 3: Check client initialization
+        if (window.supabaseClient) {
+            logTest('Client Init', 'pass', 'Supabase client created ✓');
+        } else {
+            logTest('Client Init', 'fail', 'Supabase client NOT created ✗');
+        }
+
+        // Test 4: Try to query players table
+        (async () => {
+            if (!window.supabaseClient) {
+                logTest('Query Players', 'fail', 'Cannot query - client not initialized ✗');
+                return;
+            }
+
+            try {
+                const { data, error } = await window.supabaseClient
+                    .from('players')
+                    .select('count', { count: 'exact' });
+
+                if (error) {
+                    logTest('Query Players', 'fail', `Error: ${error.message} ✗<br/>This usually means:<br/>- Table doesn't exist (run supabase_schema.sql)<br/>- RLS policy blocks access`);
+                } else {
+                    logTest('Query Players', 'pass', `Table exists and is readable ✓`);
+                }
+            } catch (err) {
+                logTest('Query Players', 'fail', `Exception: ${err.message} ✗`);
+            }
+
+            // Test 5: Try to query games table
+            try {
+                const { data, error } = await window.supabaseClient
+                    .from('games')
+                    .select('count', { count: 'exact' });
+
+                if (error) {
+                    logTest('Query Games', 'fail', `Error: ${error.message} ✗<br/>This usually means:<br/>- Table doesn't exist (run supabase_schema.sql)<br/>- RLS policy blocks access`);
+                } else {
+                    logTest('Query Games', 'pass', `Table exists and is readable ✓`);
+                }
+            } catch (err) {
+                logTest('Query Games', 'fail', `Exception: ${err.message} ✗`);
+            }
+
+            // Test 6: Try to insert into players
+            try {
+                const testName = 'TestPlayer_' + Date.now();
+                const { data, error } = await window.supabaseClient
+                    .from('players')
+                    .insert([{ name: testName }])
+                    .select();
+
+                if (error) {
+                    logTest('Insert Player', 'fail', `Error: ${error.message} ✗<br/>RLS policy likely blocks INSERT without authentication`);
+                } else {
+                    logTest('Insert Player', 'pass', `Successfully inserted test player ✓<br/>(Will be cleaned up manually)`);
+                }
+            } catch (err) {
+                logTest('Insert Player', 'fail', `Exception: ${err.message} ✗`);
+            }
+
+            // Test 7: Try to insert into games
+            try {
+                const { data, error } = await window.supabaseClient
+                    .from('games')
+                    .insert([{
+                        player_x: null,
+                        player_o: null,
+                        winner: 'test',
+                        moves: ['X', 'O', 'X']
+                    }])
+                    .select();
+
+                if (error) {
+                    logTest('Insert Game', 'fail', `Error: ${error.message} ✗<br/>RLS policy likely blocks INSERT without authentication`);
+                } else {
+                    logTest('Insert Game', 'pass', `Successfully inserted test game ✓<br/>(Will be cleaned up manually)`);
+                }
+            } catch (err) {
+                logTest('Insert Game', 'fail', `Exception: ${err.message} ✗`);
+            }
+
+            // Summary
+            logTest('Summary', 'pending', '<strong>If tests passed:</strong> Reload game.html and play!<br/><strong>If INSERT failed:</strong> Check RLS policies in Supabase (Security → Policies) or disable them for anon role');
+        })();
+    </script>
+</body>
+</html>
